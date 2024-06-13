@@ -1,0 +1,262 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap");
+:root {
+  --primary-color: #92C7CF;
+  --primary-color-light: #fffcfa;
+  --primary-color-dark: #3B84A3;
+  --text-black: #050505;
+  --text-dark: #453737;
+  --text-medium: #8f8f8f;
+  --text-light: #f3f3f3;
+  --white: #ffffff;
+  --primary-button: #3B84A3;
+  --primary-button-hover: #69adc1;
+  --max-width: 1200px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins";
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(248, 255, 255);
+  padding: 30px;
+}
+
+.container {
+  position: relative;
+  height: 560px;
+  max-width: 1080px;
+  width: 100%;
+  background: #fff;
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.3);
+  perspective: 2700px;
+  border-radius: 20px;
+  border: #3333338f solid 1px;
+}
+
+.container .cover {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  height: 100%;
+  width: 50%;
+  z-index: 98;
+  transition: all 1s ease;
+  transform-origin: left;
+  transform-style: preserve-3d;
+}
+
+.container #flip:checked ~ .cover {
+  transform: translateX(-100%);
+}
+
+.container .cover .front {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.container .cover::before,
+.container .cover::after {
+  content: "";
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  opacity: 0.5;
+  z-index: 12;
+}
+
+.container .cover::after {
+  opacity: 0.3;
+  transform: rotateY(180deg);
+  backface-visibility: hidden;
+}
+
+.container .cover img {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  z-index: 10;
+}
+
+.container .cover .text {
+  position: absolute;
+  z-index: 130;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.cover .text .text-1,
+.cover .text .text-2 {
+  font-size: 20px;
+  font-weight: 600;
+  color: #fff;
+}
+
+.container .forms {
+  height: 100%;
+  width: 100%;
+  background: #fff;
+}
+
+.container #flip {
+  display: none;
+}
+
+.title {
+  font-weight: 600;
+}
+
+.wave-group {
+  position: relative;
+  margin-bottom: 25px;
+}
+
+.wave-group2 {
+  position: relative;
+  margin-bottom: 5px;
+}
+
+.wave-group .inpute,
+.wave-group2 .inpute {
+  font-size: 16px;
+  color: #515151;
+  padding: 10px 10px 10px 5px;
+  display: block;
+  width: 90%;
+  max-width: 340px;
+  border: none;
+  background: transparent;
+  background-color: #efefef;
+  border-radius: 5px;
+}
+
+.wave-group .inpute:focus,
+.wave-group2 .inpute:focus {
+  outline: none;
+}
+
+.wave-group .labeltest,
+.wave-group2 .labeltest {
+  color: #000000;
+  font-family: "Noto Serif", serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-size: 18px;
+  font-weight: normal;
+  position: absolute;
+  pointer-events: none;
+  left: 10px;
+  top: 10px;
+  display: flex;
+}
+
+.wave-group .label-char,
+.wave-group2 .label-char {
+  transition: 0.2s ease all;
+  transition-delay: calc(var(--index) * 0.05s);
+}
+
+.wave-group .inpute:focus ~ label .label-char,
+.wave-group .inpute:valid ~ label .label-char,
+.wave-group2 .inpute:focus ~ label .label-char,
+.wave-group2 .inpute:valid ~ label .label-char {
+  transform: translateY(-20px);
+  font-size: 14px;
+  color: #77787b;
+}
+.wave-group .inpute:focus ~ label .label-char,
+.wave-group2 .inpute:focus ~ label .label-char {
+  font-size: 14px;
+}
+.wave-group .bar,
+.wave-group2 .bar {
+  position: relative;
+  display: block;
+  width: 340px;
+}
+
+.wave-group .bar:before,
+.wave-group .bar:after,
+.wave-group2 .bar:before,
+.wave-group2 .bar:after {
+  content: "";
+  height: 2px;
+  width: 0;
+  bottom: 1px;
+  position: absolute;
+  background: #5264ae;
+  transition: 0.2s ease all;
+  -moz-transition: 0.2s ease all;
+  -webkit-transition: 0.2s ease all;
+}
+
+.wave-group .bar:before,
+.wave-group2 .bar:before {
+  left: 50%;
+}
+
+.wave-group .bar:after,
+.wave-group2 .bar:after {
+  right: 50%;
+}
+
+.wave-group .inpute:focus ~ .bar:before,
+.wave-group .inpute:focus ~ .bar:after,
+.wave-group2 .inpute:focus ~ .bar:before,
+.wave-group2 .inpute:focus ~ .bar:after {
+  width: 50%;
+}
+
+.btn_input {
+  background-color: #00000000;
+  border: none;
+  border-radius: 5px;
+  background-color: var(--primary-button);
+  color: #fff;
+  padding: 12px 60px;
+  font-family: "Noto Serif", serif;
+}
+
+.btn_input:hover {
+  background-color: var(--primary-button-hover);
+}
+
+@media (max-width: 730px) {
+  .upper-text {
+    text-align: center;
+  }
+  .container .cover {
+    display: none;
+  }
+
+  .form-containerent .lg-form,
+  .form-containerent .reg-form {
+    width: 100%;
+  }
+  .form-containerent .reg-form {
+    display: none !important;
+  }
+  .container #flip:not(:checked) ~ .forms .reg-form {
+    display: none !important;
+  }
+  .container #flip:checked ~ .forms .reg-form {
+    display: block;
+  }
+  .container #flip:checked ~ .forms .lg-form {
+    display: none;
+  }
+}

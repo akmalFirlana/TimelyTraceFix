@@ -1,0 +1,235 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap");
+
+:root {
+  --primary-color: #92C7CF;
+  --primary-color-light: #fffcfa;
+  --primary-color-dark: #3B84A3;
+  --text-black: #050505;
+  --text-dark: #453737;
+  --text-medium: #8f8f8f;
+  --text-light: #f3f3f3;
+  --white: #ffffff;
+  --primary-button: #3B84A3;
+  --primary-button-hover: #69B1C7;
+  --max-width: 1200px;
+}
+
+.font1 {
+  font-family: "Noto Serif", serif;
+  font-weight: 500;
+}
+
+.font2 {
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+}
+
+.desc {
+  color: var(--text-dark);
+}
+
+.pbm {
+  padding-bottom: 50px;
+}
+
+.pt1 {
+  padding-top: 100px;
+}
+
+.pt2 {
+  padding-top: 200px;
+}
+/*================================NAVBAR=============================================*/
+.navbar {
+  background-color: rgba(255, 255, 255, 0.7);
+  height: 80px;
+  margin: 15px 15px 0px 15px;
+  border-radius: 16px;
+  padding: 0.5rem;
+}
+
+.navbar-brand {
+  color: var(--text-dark);
+  font-weight: 700;
+  font-size: 26px;
+  transition: 0.3s color #88c8fa;
+  margin-left: 40px;
+}
+
+.login-button {
+  background-color: var(--primary-button);
+  color: var(--text-light);
+  font-size: 18px;
+  padding: 8px 25px;
+  border-radius: 50px;
+  text-decoration: none;
+  transition: 0.3s background-color;
+}
+
+.login-button:hover {
+  background-color: var(--primary-button-hover);
+}
+
+.navbar-toggler {
+  border: none;
+  font-size: 1.25rem;
+}
+
+.navbar-toggler:focus,
+.btn-close:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.nav-link {
+  color: var(--text-dark);
+  font-weight: 500;
+  position: relative;
+}
+
+.nav-link:hover,
+.nav-link:focus,
+.nav-link.active {
+  color: var(--text-medium) !important;
+}
+
+@media (min-width: 992px) {
+  .nav-link::before {
+    content: "";
+    position: absolute;
+    width: 80%;
+    height: 2px;
+    bottom: 0;
+    left: 50%;
+    translate: -50%;
+    background-color: var(--text-dark);
+    visibility: hidden;
+    transition: all 0.3s ease-in-out 0s;
+  }
+
+  .nav-link:hover::before,
+  .nav-link:focus::before,
+  .nav-link.active::before {
+    width: 100%;
+    visibility: visible;
+  }
+}
+
+.header__container {
+  padding: 100px 0 0 0;
+}
+
+.header__shape {
+  background-attachment: fixed;
+}
+.section__container {
+  max-width: var(--max-width);
+  margin: auto;
+}
+
+.hero {
+  font-family: "Noto Serif", serif;
+  font-weight: 700;
+  font-size: 2.5rem;
+}
+
+.section__header {
+  margin-bottom: 1rem;
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 3rem;
+  color: var(--text-black);
+  text-align: center;
+  font-family: serif;
+}
+
+.section__description {
+  font-family: sans-serif;
+  line-height: 1.75rem;
+}
+
+.btn {
+  padding: 0.75rem 1.5rem;
+  outline: none;
+  border: none;
+  white-space: nowrap;
+  font-size: 1rem;
+  color: var(--white);
+  background-color: var(--primary-button);
+  border-radius: 10px;
+  transition: 0.3s;
+  cursor: pointer;
+  bottom: 0;
+}
+
+.btn:hover {
+  background-color: var(--primary-button-hover);
+}
+
+img {
+  display: flex;
+  width: 100%;
+}
+
+a {
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.btn {
+  border-radius: 80px;
+}
+
+.section__better i {
+  font-size: 36px; 
+  margin-right: 10px;
+  color: #88c8fa;
+}
+
+.section__description br {
+  margin-bottom: 5px;
+}
+.icon-container {
+  margin-right: 10px;
+}
+
+@media (max-width: 767.98px) {
+  .icon-container {
+      margin-right: 5px;
+  }
+}
+
+.card:hover, .card:focus {
+  box-shadow: 0px 0px 20px 5px #ffbb763f;
+  border: 1px solid rgba(109, 109, 109, 0.7);
+  transition: 0.3s;
+  transform: all 0.3s scale3d(1.01, 1.001, 1);
+}
+
+.section__better {
+  font-size: 20px;
+}
+
+.bottom-container {
+  background-image: url(imglan/bottom2.svg);
+  background-repeat: no-repeat;
+  height: 350px;
+  margin: 20px;
+  border-radius: 20px;
+}
+
+@media screen and (max-width: 768px) {
+  * {
+    padding: auto;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+  }
+
+  body {
+    margin: 0px 15px; 
+  }
+  
+  
+}

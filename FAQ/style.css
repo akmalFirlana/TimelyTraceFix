@@ -1,0 +1,131 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Noto+Serif:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+:root {
+  --primary-color: #92c7cf;
+  --primary-color-light: #e0dfdf;
+  --primary-color-dark: #3b84a3;
+  --text-black: #050505;
+  --text-dark: #453737;
+  --text-medium: #8f8f8f;
+  --text-light: #f3f3f3;
+  --white: #ffffff;
+  --primary-button: #3b84a3;
+  --primary-button-hover: #69b1c7;
+  --max-width: 1200px;
+}
+.m-top {
+  margin-top: 100px;
+}
+
+* {
+  font-family: "Poppins", sans-serif;
+}
+
+.navbar {
+  background-color: rgba(255, 255, 255, 0.9);
+  height: 80px;
+  margin: 15px 15px 0px 15px;
+  border-radius: 16px;
+  padding: 0.5rem;
+}
+
+.navbar-brand {
+  color: var(--text-dark);
+  font-weight: 700;
+  font-size: 26px;
+  transition: 0.3s color #88c8fa;
+  margin-left: 40px;
+}
+
+.login-button {
+  background-color: var(--primary-button);
+  color: var(--text-light);
+  font-size: 18px;
+  padding: 8px 25px;
+  border-radius: 50px;
+  text-decoration: none;
+  transition: 0.3s background-color;
+}
+
+.login-button:hover {
+  background-color: var(--primary-button-hover);
+}
+
+.navbar-toggler {
+  border: none;
+  font-size: 1.25rem;
+}
+
+.navbar-toggler:focus,
+.btn-close:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.nav-link {
+  color: var(--text-dark);
+  font-weight: 500;
+  position: relative;
+}
+
+.nav-link:hover,
+.nav-link:focus,
+.nav-link.active {
+  color: var(--text-medium) !important;
+}
+
+@media (min-width: 992px) {
+  .nav-link::before {
+    content: "";
+    position: absolute;
+    width: 80%;
+    height: 2px;
+    bottom: 0;
+    left: 50%;
+    translate: -50%;
+    background-color: var(--text-dark);
+    visibility: hidden;
+    transition: all 0.3s ease-in-out 0s;
+  }
+
+  .nav-link:hover::before,
+  .nav-link:focus::before,
+  .nav-link.active::before {
+    width: 100%;
+    visibility: visible;
+  }
+}
+
+.btn {
+  padding: 0.5rem 1.5rem;
+  outline: none;
+  border: none;
+  white-space: nowrap;
+  font-size: 1rem;
+  color: var(--white);
+  background-color: var(--primary-button);
+  border-radius: 20px;
+  transition: 0.3s;
+  cursor: pointer;
+  bottom: 0;
+}
+
+.btn:hover {
+  background-color: var(--primary-button-hover);
+}
+
+.title {
+  color: var(--text-black);
+  font-weight: 700;
+  padding: 20px;
+}
+
+.accordion-header {
+  background-color: var(--primary-color-light);
+}
+
+@media screen and (max-width: 768px) {
+  .header {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+}
