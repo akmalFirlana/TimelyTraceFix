@@ -15,12 +15,21 @@
 </head>
 
 <body>
+    <?php
+    session_start();
+
+    $host = "localhost";
+    $user = "root";
+    $pass = "";
+    $database = "db_timelytrace";
+    $conn = mysqli_connect($host, $user, $pass, $database);
+    $logged = isset($_SESSION['isLogged']) && $_SESSION['isLogged'] === true;
+    ?>
     <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container-fluid">
             <img src="img/logo.svg" alt="logo" style="width: 40px;">
             <a class="navbar-brand me-auto ms-2" href="#">TimelyTrace</a>
-            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar"
-                aria-labelledby="offcanvasNavbarLabel">
+            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
                 <div class="offcanvas-header">
                     <h5 class="offcanvas-title" id="offcanvasNavbarLabel">TimelyTrace</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
@@ -28,31 +37,40 @@
                 <div class="offcanvas-body">
                     <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
                         <li class="nav-item p-1">
-                            <a class="nav-link" href="../loginpage/landingpage.html">Home</a>
+                            <a class="nav-link" href="../loginpage/landingpage.php">Home</a>
                         </li>
-
                         <li class="nav-item p-1">
-                            <a class="nav-link" href="../FAQ/faq.html">Faq</a>
+                            <a class="nav-link" href="../FAQ/faq.php">Faq</a>
                         </li>
                         <li class="nav-item p-1">
                             <div class="dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                                    aria-expanded="false">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     Fitur
                                 </a>
                                 <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="../input/input.php">Input</a></li>
-                                    <li><a class="dropdown-item" href="../CRUD/Datapage.php">Catatan</a></li>
-                                    <li><a class="dropdown-item" href="../input/inputkelas.php">Kelas</a></li>
+                                    <?php if ($logged): ?>
+                                        <li><a class="dropdown-item" href="../CRUD/dashboard.php">dashboard</a></li>
+                                        <li><a class="dropdown-item" href="../input/input.php">Input</a></li>
+                                        <li><a class="dropdown-item" href="../CRUD/Datapage.php">Catatan</a></li>
+                                        <li><a class="dropdown-item" href="../input/inputkelas.php">Kelas</a></li>
+                                    <?php else: ?>
+                                        <li><a class="dropdown-item disabled" href="#">dashboard</a></li>
+                                        <li><a class="dropdown-item disabled" href="#">Input</a></li>
+                                        <li><a class="dropdown-item disabled" href="#">Catatan</a></li>
+                                        <li><a class="dropdown-item disabled" href="#">Kelas</a></li>
+                                    <?php endif; ?>
                                 </ul>
                             </div>
                         </li>
                     </ul>
                 </div>
             </div>
-            <a href=".../loginpage/loginpage.php" class="login-button">Login</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
-                aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+            <?php if ($logged): ?>
+                <a href="../loginpage/logout.php" class="login-button">Logout</a>
+            <?php else: ?>
+                <a href="../loginpage/loginpage.php" class="login-button">Login</a>
+            <?php endif; ?>
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
         </div>

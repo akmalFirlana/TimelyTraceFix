@@ -1,5 +1,4 @@
 <?php
-//koneksi ke mysqli
 $host="localhost";
 $user="root";
 $pass="";

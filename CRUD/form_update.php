@@ -197,7 +197,7 @@
                     <img src="img/logo.svg" alt="logo" style="width: 40px;">
                 </button>
                 <div class="sidebar-logo">
-                    <a href="../loginpage/landingpage.html">TimelyTrace</a>
+                    <a href="../loginpage/landingpage.php">TimelyTrace</a>
                 </div>
             </div>
             <ul class="sidebar-nav">

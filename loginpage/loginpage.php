@@ -40,7 +40,7 @@
                     <form action="proses_login.php" method="post">
                         <div class="input-boxs">
                             <div class="wave-group">
-                                <input required="" type="text" class="inpute" name="email">
+                                <input required="" type="text" class="inpute" name="email" id="email" required>
                                 <span class="bar"></span>
                                 <label class="labeltest">
                                     <span class="label-char" style="--index: 0">E</span>
@@ -51,7 +51,7 @@
                                 </label>
                             </div>
                             <div class="wave-group2">
-                                <input required="" type="password" class="inpute" name="password">
+                                <input required="" type="password" class="inpute" name="password" id="password" required>
                                 <span class="bar"></span>
                                 <label class="labeltest">
                                     <span class="label-char" style="--index: 0">P</span>
@@ -99,7 +99,7 @@
                                 </label>
                             </div>
                             <div class="wave-group">
-                                <input required="" type="text" class="inpute" name="email">
+                                <input required="" type="email" class="inpute" name="email">
                                 <span class="bar"></span>
                                 <label class="labeltest">
                                     <span class="label-char" style="--index: 0">E</span>
@@ -124,7 +124,7 @@
                                 </label>
                             </div>
                             <div class="btn input-box d-block">
-                                <input type="submit" class="btn_input" onclick="window.location.href='landingpage.php'" value="Register" name="kirim_register">
+                                <input type="submit" class="btn_input" value="Register" name="kirim_register">
                             </div>
                             <div class="text reg-txt" style="text-align: center">Sudah punya akun? <label
                                     style="color: #03A5CA; text-decoration: underline;" for="flip">Login</label>

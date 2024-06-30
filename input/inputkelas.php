@@ -1,9 +1,10 @@
 <?php
-// Database configuration
+session_start();
+
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "db_Timelytrace";
+$dbname = "db_timelytrace";
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -13,22 +14,15 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// Create table if it doesn't exist
-$sql = "CREATE TABLE IF NOT EXISTS kelas (
-    id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    nama_kelas VARCHAR(50) NOT NULL
-)";
-
-if ($conn->query($sql) === FALSE) {
-    echo "Error creating table: " . $conn->error;
-}
+$name = $_SESSION['username'];
+$kelasname = "kelas_" . $name;
 
 // Handle form submission for adding class
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["add"])) {
     $nama_kelas = $_POST["kelas"];
 
     if (!empty($nama_kelas)) {
-        $stmt = $conn->prepare("INSERT INTO kelas (nama_kelas) VALUES (?)");
+        $stmt = $conn->prepare("INSERT INTO $kelasname (nama_kelas) VALUES (?)");
         $stmt->bind_param("s", $nama_kelas);
 
         if ($stmt->execute()) {
@@ -49,7 +43,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["update"])) {
     $nama_kelas = $_POST["kelas"];
 
     if (!empty($nama_kelas)) {
-        $stmt = $conn->prepare("UPDATE kelas SET nama_kelas = ? WHERE id = ?");
+        $stmt = $conn->prepare("UPDATE $kelasname SET nama_kelas = ? WHERE id = ?");
         $stmt->bind_param("si", $nama_kelas, $id);
 
         if ($stmt->execute()) {
@@ -68,7 +62,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["update"])) {
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["delete"])) {
     $id = $_POST["id"];
 
-    $stmt = $conn->prepare("DELETE FROM kelas WHERE id = ?");
+    $stmt = $conn->prepare("DELETE FROM $kelasname WHERE id = ?");
     $stmt->bind_param("i", $id);
 
     if ($stmt->execute()) {
@@ -80,11 +74,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["delete"])) {
     $stmt->close();
 }
 
-// Fetch classes from the database
-$result = $conn->query("SELECT * FROM kelas");
+$result = $conn->query("SELECT * FROM $kelasname");
 
 $conn->close();
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -105,17 +99,23 @@ $conn->close();
 <body>
     <div class="wrapper">
 
-        <aside id="sidebar" class="expand">
+    <aside id="sidebar" class="expand">
             <div class="d-flex align-items-center justify-content-start mt-3"
                 style="height: 50px; justify-content: center;">
                 <button class="toggle-btn" type="button">
                     <img src="img/logo.svg" alt="logo" style="width: 40px;">
                 </button>
                 <div class="sidebar-logo">
-                    <a href="../loginpage/landingpage.html">TimelyTrace</a>
+                    <a href="../loginpage/landingpage.php">TimelyTrace</a>
                 </div>
             </div>
             <ul class="sidebar-nav">
+                <li class="sidebar-item">
+                    <a href="../CRUD/dashboard.php" class="sidebar-link">
+                        <i class="fa-solid fa-house"></i>
+                        <span style="font-weight: 600;">Beranda</span>
+                    </a>
+                </li>
                 <li class="sidebar-item">
                     <a href="../input/input.php" class="sidebar-link">
                         <i class="fa-solid fa-pen-to-square"></i>
@@ -130,30 +130,23 @@ $conn->close();
                 </li>
                 <li class="sidebar-item">
                     <a href="../input/inputkelas.php" class="sidebar-link">
-                        <i class="bi bi-people-fill"></i>
+                        <i class="fa-solid fa-users"></i>
                         <span style="font-weight: 600;">Kelas</span>
+                    </a>
+                </li>   
+                <li class="sidebar-item">
+                    <a href="../FAQ/faq.php" class="sidebar-link">
+                        <i class="fa-solid fa-headset"></i>
+                        <span style="font-weight: 600;">FaQ</span>
                     </a>
                 </li>
                 <li class="sidebar-item">
-                    <a href="../faq/faq.html" class="sidebar-link">
-                        <i class="bi bi-question-circle-fill"></i>
-                        <span style="font-weight: 600;">Faq</span>
+                    <a href="../loginpage/logout.php" class="sidebar-link">
+                        <i class="fa-solid fa-right-from-bracket"></i>
+                        <span style="font-weight: 600;">Logout</span>
                     </a>
                 </li>
             </ul>
-            <div class="sidebar-footer">
-                <a href="#" class="sidebar-link">
-                    <i class="bi bi-headset"></i>
-                    <span style="font-weight: 600;">Bantuan?</span>
-                </a>
-            </div>
-            <div class="sidebar-footer">
-                <a href="#" class="sidebar-link">
-                    <i class="fa-solid fa-right-from-bracket"></i>
-                    <span style="font-weight: 600;">Logout</span>
-                </a>
-            </div>
-
         </aside>
 
         <div class="main" style="background-color: #EEEEEE">
@@ -182,7 +175,6 @@ $conn->close();
                                 </div>
                             </button>
 
-                            <!-- Edit Modal -->
                             <div class="modal fade" id="editModal<?php echo $row['id']; ?>" tabindex="-1"
                                 aria-labelledby="editModalLabel<?php echo $row['id']; ?>" aria-hidden="true">
                                 <div class="modal-dialog">
