@@ -29,18 +29,18 @@ if ($result->num_rows > 0) {
         $name = $row['username'];
         $_SESSION['name'] = $name;
         echo "<script type='text/javascript'>
-                alert('Welcome, $name!');
+                alert('Selamat Datang, $name!');
                 window.location.href = 'landingpage.php';
               </script>";
     } else {
         echo "<script type='text/javascript'>
-                alert('Invalid password.');
+                alert('Password yang anda masukkan salah.');
                 window.location.href = 'loginpage.php';
               </script>";
     }
 } else {
     echo "<script type='text/javascript'>
-            alert('No user found with that email.');
+            alert('Email yang anda masukkan tidak terdaftar.');
             window.location.href = 'loginpage.php';
           </script>";
 }
